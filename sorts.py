@@ -50,9 +50,6 @@ def menu(choice, arr):
 			print("The bubble sort was faster than the insertion sort by: ", (insertionTime - insertionTime), "seconds")
 
 
-# n = int(input("Enter the length of list: "))
-
-# numbers = [random.randint(0, 100000) for x in range(0, n)]
 file = open('numbers.txt', 'r')
 
 for line in file:
@@ -60,7 +57,6 @@ for line in file:
 
 numbers = lineList
 
-# numbersList = [int(s) for s in numbers.split(',')]
 
 choice = int(input("(1) Bubble    (2) Insetion    (3) Time Difference : "))
 
