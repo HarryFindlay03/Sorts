@@ -57,7 +57,6 @@ for line in file:
 
 numbers = lineList
 
-
 choice = int(input("(1) Bubble    (2) Insetion    (3) Time Difference : "))
 
 menu(choice, numbers)
