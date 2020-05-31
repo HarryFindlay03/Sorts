@@ -31,6 +31,43 @@ class Sorts:
 		total = t1 - t0
 		tup = (self.arr, total)
 		return(tup)
+	
+	def mergeSort(self, arr): # Recursive function, has to take the arr as a parameter.
+		t0 = time.time()
+		if(len(arr) > 1):
+			mid = len(arr) // 2
+			leftHalf = arr[:mid]
+			rightHalf = arr[mid:]
+
+			self.mergeSort(leftHalf)
+			self.mergeSort(rightHalf)
+
+			i = 0
+			j = 0
+			k = 0
+
+			while i < len(leftHalf) and j < len(rightHalf):
+				if leftHalf[i] < rightHalf[j]:
+					arr[k] = leftHalf[i]
+					i += 1
+				else:
+					arr[k] = rightHalf[j]
+					j += 1
+				k += 1
+
+			while i < len(leftHalf):
+				arr[k] = leftHalf[i]
+				i += 1
+				k += 1
+			
+			while j < len(rightHalf):
+				arr[k] = rightHalf[j]
+				j += 1
+				k += 1
+		t1 = time.time()
+		total = t1 - t0
+		tup = (arr, total)
+		return(tup)
 
 def menu(choice, arr):
 	x = Sorts(arr)
@@ -40,6 +77,8 @@ def menu(choice, arr):
 	elif choice == 2:
 		print("Time Taken: ", x.insertion()[1])
 	elif choice == 3:
+		print("Time Taken: ", x.mergeSort(numbers)[1])
+	elif choice == 4:
 		bubbleTime = x.bubble()[1]
 		insertionTime = x.insertion()[1]
 		if insertionTime < bubbleTime:
@@ -57,7 +96,7 @@ for line in file:
 
 numbers = lineList
 
-choice = int(input("(1) Bubble    (2) Insetion    (3) Time Difference : "))
+choice = int(input("(1) Bubble    (2) Insetion    (3) Merge : "))
 
 menu(choice, numbers)
 
